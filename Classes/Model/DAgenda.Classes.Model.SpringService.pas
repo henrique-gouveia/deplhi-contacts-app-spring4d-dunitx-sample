@@ -17,7 +17,8 @@ type
     FSession: TSession;
     function CreateRespository: IInterface; override;
   public
-    constructor Create(const connectionBuilder: IConnectionBuilder<IDBConnection>);
+    constructor Create(const connection: IDBConnection); overload;
+    constructor Create(const connectionBuilder: IConnectionBuilder<IDBConnection>); overload;
 
     function FindOne(const id: TId): T; override;
     function FindAll: IList<T>; override;
@@ -30,11 +31,16 @@ implementation
 uses
   Spring.Persistence.Core.Repository.Simple;
 
+constructor TSpringService<T, TId>.Create(const connection: IDBConnection);
+begin
+  inherited Create;
+  FSession := TSession.Create(connection);
+  FRepository := Self.CreateRespository as IPagedRepository<T, TId>;
+end;
+
 constructor TSpringService<T, TId>.Create(const connectionBuilder: IConnectionBuilder<IDBConnection>);
 begin
-  FSession := TSession.Create(connectionBuilder.CreateConfiguredSession.Build());
-  FRepository := Self.CreateRespository as IPagedRepository<T, TId>;
-  inherited Create;
+  Create(connectionBuilder.CreateConfiguredSession.Build());
 end;
 
 function TSpringService<T, TId>.CreateRespository: IInterface;
