@@ -47,6 +47,5 @@ __history/
 # Arquivos especificos do projeto
 
 # Don't track Directories
-Data/
 Debug/
 Release/

@@ -15,14 +15,14 @@ object MainForm: TMainForm
     Size.Height = 480.000000000000000000
     Size.PlatformDefault = False
     TabHeight = 49.000000000000000000
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 0
     TabPosition = PlatformDefault
     object tbiContactsList: TTabItem
       CustomIcon = <
         item
         end>
-      IsSelected = False
+      IsSelected = True
       Size.Width = 160.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
@@ -78,7 +78,7 @@ object MainForm: TMainForm
       CustomIcon = <
         item
         end>
-      IsSelected = True
+      IsSelected = False
       Size.Width = 160.000000000000000000
       Size.Height = 49.000000000000000000
       Size.PlatformDefault = False
