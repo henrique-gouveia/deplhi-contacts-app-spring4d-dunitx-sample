@@ -1,0 +1,290 @@
+object MainForm: TMainForm
+  Left = 0
+  Top = 0
+  Caption = 'DAgenda'
+  ClientHeight = 480
+  ClientWidth = 320
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 3
+  object tcMain: TTabControl
+    Align = Client
+    Size.Width = 320.000000000000000000
+    Size.Height = 480.000000000000000000
+    Size.PlatformDefault = False
+    TabHeight = 49.000000000000000000
+    TabIndex = 1
+    TabOrder = 0
+    TabPosition = PlatformDefault
+    object tbiContactsList: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = False
+      Size.Width = 160.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'List'
+      ExplicitSize.cx = 160.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object tbContactsList: TToolBar
+        Size.Width = 320.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object lblContactsListTitle: TLabel
+          Align = Contents
+          AutoSize = True
+          Size.Width = 320.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Center
+          TextSettings.WordWrap = False
+          Text = 'Contatos'
+        end
+        object spbNew: TSpeedButton
+          Action = actNew
+          Align = Right
+          Enabled = True
+          ImageIndex = -1
+          Margins.Right = 8.000000000000000000
+          Position.X = 264.000000000000000000
+          Size.Width = 48.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'addtoolbutton'
+          Visible = True
+        end
+      end
+      object lvMain: TListView
+        Touch.InteractiveGestures = [LongTap]
+        ItemAppearanceClassName = 'TListItemAppearance'
+        ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
+        HeaderAppearanceClassName = 'TListHeaderObjects'
+        FooterAppearanceClassName = 'TListHeaderObjects'
+        Align = Client
+        Size.Width = 320.000000000000000000
+        Size.Height = 383.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        OnItemClick = ItemClick
+      end
+    end
+    object tbiContactsManager: TTabItem
+      CustomIcon = <
+        item
+        end>
+      IsSelected = True
+      Size.Width = 160.000000000000000000
+      Size.Height = 49.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = ''
+      TabOrder = 0
+      Text = 'Manager'
+      ExplicitSize.cx = 160.000000000000000000
+      ExplicitSize.cy = 49.000000000000000000
+      object tbContactsManager: TToolBar
+        Size.Width = 320.000000000000000000
+        Size.Height = 48.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object spbBack: TSpeedButton
+          Action = actBack
+          Align = Left
+          Enabled = True
+          ImageIndex = -1
+          Margins.Left = 8.000000000000000000
+          Position.X = 8.000000000000000000
+          Size.Width = 48.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'backtoolbutton'
+          Visible = True
+        end
+        object spbOk: TSpeedButton
+          Action = actAdd
+          Align = Right
+          Enabled = True
+          ImageIndex = -1
+          Margins.Right = 8.000000000000000000
+          Position.X = 208.000000000000000000
+          Size.Width = 48.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'donetoolbutton'
+          Visible = True
+        end
+        object spdRemove: TSpeedButton
+          Action = actRemove
+          Align = Right
+          Enabled = True
+          ImageIndex = -1
+          Margins.Right = 8.000000000000000000
+          Position.X = 264.000000000000000000
+          Size.Width = 48.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'deletetoolbutton'
+          Visible = True
+        end
+        object lblContactsManagerTitle: TLabel
+          Align = Contents
+          AutoSize = True
+          Size.Width = 320.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Center
+          TextSettings.WordWrap = False
+          Text = 'Gerenciar'
+        end
+      end
+      object lytContactsManager: TLayout
+        Align = Client
+        Size.Width = 320.000000000000000000
+        Size.Height = 383.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        object lbMain: TListBox
+          Align = Client
+          Size.Width = 320.000000000000000000
+          Size.Height = 383.000000000000000000
+          Size.PlatformDefault = False
+          StyleLookup = 'transparentlistboxstyle'
+          TabOrder = 0
+          DisableFocusEffect = True
+          DefaultItemStyles.ItemStyle = ''
+          DefaultItemStyles.GroupHeaderStyle = ''
+          DefaultItemStyles.GroupFooterStyle = ''
+          Viewport.Width = 320.000000000000000000
+          Viewport.Height = 383.000000000000000000
+          object lbghNome: TListBoxGroupHeader
+            Selectable = False
+            Size.Width = 320.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 0
+            Text = 'Nome'
+            object lblId: TLabel
+              Align = Right
+              AutoSize = True
+              Margins.Right = 8.000000000000000000
+              Position.X = 312.000000000000000000
+              Size.Height = 30.000000000000000000
+              Size.PlatformDefault = False
+              TextSettings.WordWrap = False
+              Visible = False
+            end
+          end
+          object lbiNome: TListBoxItem
+            Selectable = False
+            Position.Y = 30.000000000000000000
+            Size.Width = 320.000000000000000000
+            Size.Height = 44.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 1
+            object edtNome: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Anchors = [akLeft, akTop, akRight]
+              TabOrder = 0
+              Position.X = 8.000000000000000000
+              Position.Y = 8.000000000000000000
+              Margins.Left = 8.000000000000000000
+              Margins.Top = 8.000000000000000000
+              Margins.Right = 8.000000000000000000
+              Size.Width = 304.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+          object lbghEmail: TListBoxGroupHeader
+            Position.Y = 74.000000000000000000
+            Size.Width = 320.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 2
+            Text = 'Email'
+          end
+          object lbiEmail: TListBoxItem
+            Selectable = False
+            Position.Y = 104.000000000000000000
+            Size.Width = 320.000000000000000000
+            Size.Height = 44.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 3
+            object edtEmail: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Anchors = [akLeft, akTop, akRight]
+              TabOrder = 0
+              KeyboardType = EmailAddress
+              Position.X = 8.000000000000000000
+              Position.Y = 8.000000000000000000
+              Margins.Left = 8.000000000000000000
+              Margins.Top = 8.000000000000000000
+              Margins.Right = 8.000000000000000000
+              Size.Width = 304.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+          object lbghTelefone: TListBoxGroupHeader
+            Position.Y = 148.000000000000000000
+            Size.Width = 320.000000000000000000
+            Size.Height = 30.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 4
+            Text = 'Telefone'
+          end
+          object lbiTelefone: TListBoxItem
+            Selectable = False
+            Position.Y = 178.000000000000000000
+            Size.Width = 320.000000000000000000
+            Size.Height = 44.000000000000000000
+            Size.PlatformDefault = False
+            TabOrder = 5
+            object edtTelefone: TEdit
+              Touch.InteractiveGestures = [LongTap, DoubleTap]
+              Anchors = [akLeft, akTop, akRight]
+              TabOrder = 0
+              KeyboardType = NumberPad
+              Position.X = 8.000000000000000000
+              Position.Y = 8.000000000000000000
+              Margins.Left = 8.000000000000000000
+              Margins.Top = 8.000000000000000000
+              Margins.Right = 8.000000000000000000
+              Size.Width = 304.000000000000000000
+              Size.Height = 32.000000000000000000
+              Size.PlatformDefault = False
+            end
+          end
+        end
+      end
+    end
+  end
+  object actMain: TActionList
+    Left = 40
+    Top = 416
+    object ctaChangeTab: TChangeTabAction
+      Category = 'Tab'
+    end
+    object actNew: TAction
+      Category = 'ToolBar'
+      OnExecute = NewClick
+    end
+    object actBack: TAction
+      Category = 'ToolBar'
+      OnExecute = BackClick
+    end
+    object actAdd: TAction
+      Category = 'ToolBar'
+      OnExecute = AddClick
+    end
+    object actRemove: TAction
+      Category = 'ToolBar'
+      OnExecute = RemoveClick
+    end
+  end
+end
