@@ -331,7 +331,6 @@
         <DCCReference Include="Classes\Connection\DAgenda.Classes.Connection.Interfaces.pas"/>
         <DCCReference Include="Classes\Model\DAgenda.Classes.Model.AbstractService.pas"/>
         <DCCReference Include="Classes\Model\DAgenda.Classes.Model.Contact.pas"/>
-        <DCCReference Include="Classes\Model\DAgenda.Classes.Model.ContactRepository.pas"/>
         <DCCReference Include="Classes\Model\DAgenda.Classes.Model.ContactService.pas"/>
         <DCCReference Include="Classes\Model\DAgenda.Classes.Model.Interfaces.pas"/>
         <DCCReference Include="Classes\Model\DAgenda.Classes.Model.SpringService.pas"/>

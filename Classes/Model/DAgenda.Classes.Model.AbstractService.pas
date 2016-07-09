@@ -9,43 +9,14 @@ uses
 type
   TAbstractService<T: class, constructor; TId> = class abstract(TInterfacedObject, IEntityService<T, TId>)
   protected
-    FRepository: IEntityRepository<T, TId>;
     function CreateRespository: IInterface; virtual; abstract;
   public
-    constructor Create;
-
-    function FindOne(const id: TId): T; virtual;
-    function FindAll: IList<T>; virtual;
-    procedure Remove(entity: T); virtual;
-    procedure Save(entity: T); virtual;
+    function FindOne(const id: TId): T; virtual; abstract;
+    function FindAll: IList<T>; virtual; abstract;
+    procedure Remove(entity: T); virtual; abstract;
+    procedure Save(entity: T); virtual; abstract;
   end;
 
 implementation
-
-constructor TAbstractService<T, TId>.Create;
-begin
-  inherited Create;
-  FRepository := Self.CreateRespository() as IEntityRepository<T, TId>;
-end;
-
-function TAbstractService<T, TId>.FindOne(const id: TId): T;
-begin
-  Result := FRepository.FindOne(id);
-end;
-
-function TAbstractService<T, TId>.FindAll: IList<T>;
-begin
-  Result := FRepository.FindAll();
-end;
-
-procedure TAbstractService<T, TId>.Remove(entity: T);
-begin
-  FRepository.Delete(entity);
-end;
-
-procedure TAbstractService<T, TId>.Save(entity: T);
-begin
-  FRepository.Save(entity);
-end;
 
 end.

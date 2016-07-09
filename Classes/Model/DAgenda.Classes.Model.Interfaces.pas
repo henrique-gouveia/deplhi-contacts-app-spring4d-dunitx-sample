@@ -3,8 +3,7 @@ unit DAgenda.Classes.Model.Interfaces;
 interface
 
 uses
-  Spring.Collections,
-  Spring.Persistence.Core.Interfaces;
+  Spring.Collections;
 
 type
   IEntityService<T: class, constructor; TId> = interface
@@ -13,10 +12,6 @@ type
     function FindAll: IList<T>;
     procedure Remove(entity: T);
     procedure Save(entity: T);
-  end;
-
-  IEntityRepository<T: class, constructor; TId> = interface(ICrudRepository<T, TId>)
-    ['{D66E9327-2F1E-46B2-9092-64ABCE0DE40C}']
   end;
 
 implementation

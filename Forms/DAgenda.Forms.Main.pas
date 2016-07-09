@@ -7,7 +7,10 @@ uses
   System.Actions, FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
   FMX.StdCtrls, FMX.Controls.Presentation, FMX.Edit, FMX.TabControl, FMX.ActnList,
   FMX.ListBox, FMX.Layouts, FMX.ListView.Types, FMX.ListView.Appearances, FMX.ListView,
-  FMX.ListView.Adapters.Base;
+  FMX.ListView.Adapters.Base,
+
+  DAgenda.Classes.Model.Contact,
+  DAgenda.Classes.Model.Interfaces;
 
 type
   TMainForm = class(TForm)
@@ -49,9 +52,15 @@ type
     procedure NewClick(Sender: TObject);
     procedure RemoveClick(Sender: TObject);
   private
-    procedure ActiveTab(ATabItem: TTabItem; Sender: TObject);
+    FContactService: IEntityService<TContact, Integer>;
+
+    procedure ActiveTab(tabItem: TTabItem; Sender: TObject);
 
     procedure LoadListViewContacts;
+
+    procedure LoadContact(contact: TContact);
+    procedure LoadControls(contact: TContact);
+
     procedure ResetControls;
   public
     { Public declarations }
@@ -62,6 +71,10 @@ var
 
 implementation
 
+uses
+  DAgenda.Classes.Connection.FireDAC.MarshmallowBuilder,
+  DAgenda.Classes.Model.ContactService;
+
 {$R *.fmx}
 
 procedure TMainForm.FormCreate(Sender: TObject);
@@ -69,23 +82,36 @@ begin
   tcMain.TabPosition := TTabPosition.None;
   tcMain.ActiveTab := tbiContactsList;
 
+  FContactService := TContactService.Create(TFireDACMarshmallowConnectionBuilder.Create);
   LoadListViewContacts();
 end;
 
 procedure TMainForm.ItemClick(const Sender: TObject; const AItem: TListViewItem);
+var
+  Contact: TContact;
 begin
   ActiveTab(tbiContactsManager, Sender);
+  Contact := FContactService.FindOne(AItem.Detail.ToInteger());
+  LoadControls(Contact);
 end;
 
-procedure TMainForm.ActiveTab(ATabItem: TTabItem; Sender: TObject);
+procedure TMainForm.ActiveTab(tabItem: TTabItem; Sender: TObject);
 begin
-  ctaChangeTab.Tab := ATabItem;
+  ctaChangeTab.Tab := tabItem;
   ctaChangeTab.ExecuteTarget(Sender);
 end;
 
 procedure TMainForm.AddClick(Sender: TObject);
+var
+  Contact: TContact;
 begin
-  //
+  Contact := TContact.Create;
+
+  LoadContact(Contact);
+  FContactService.Save(Contact);
+
+  ResetControls();
+  ActiveControl := edtNome;
 end;
 
 procedure TMainForm.BackClick(Sender: TObject);
@@ -103,13 +129,43 @@ begin
 end;
 
 procedure TMainForm.RemoveClick(Sender: TObject);
+var
+  Contact: TContact;
 begin
-  //
+  Contact := FContactService.FindOne(StrToIntDef(lblId.Text, 0));
+  FContactService.Remove(Contact);
+  ResetControls();
+end;
+
+procedure TMainForm.LoadContact(contact: TContact);
+begin
+  contact.Id := StrToIntDef(lblId.Text, 0);
+  contact.Nome := edtNome.Text;
+  contact.Email := edtEmail.Text;
+  contact.Telefone := edtTelefone.Text;
+end;
+
+procedure TMainForm.LoadControls(contact: TContact);
+begin
+  lblId.Text := contact.Id.ToString();
+  edtNome.Text := contact.Nome;
+  edtEmail.Text := contact.Email;
+  edtTelefone.Text := contact.Telefone;
 end;
 
 procedure TMainForm.LoadListViewContacts;
+var
+  Item: TListViewItem;
+  Contact: TContact;
 begin
   lvMain.Items.Clear;
+
+  for Contact in FContactService.FindAll() do
+  begin
+    Item := lvMain.Items.Add();
+    Item.Text := Contact.Nome;
+    Item.Detail := Contact.Id.ToString();
+  end;
 end;
 
 procedure TMainForm.ResetControls;
