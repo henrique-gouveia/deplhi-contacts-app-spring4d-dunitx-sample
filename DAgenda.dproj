@@ -6,7 +6,7 @@
         <MainSource>DAgenda.dpr</MainSource>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Android</Platform>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1119</TargetedPlatforms>
         <AppType>Application</AppType>
     </PropertyGroup>
@@ -327,8 +327,14 @@
         <DCCReference Include="Forms\DAgenda.Forms.Main.pas">
             <Form>MainForm</Form>
         </DCCReference>
-        <DCCReference Include="Classes\Classes.Contact.pas"/>
-        <DCCReference Include="Classes\Classes.Builders.pas"/>
+        <DCCReference Include="Classes\Connection\DAgenda.Classes.Connection.FireDAC.MarshmallowBuilder.pas"/>
+        <DCCReference Include="Classes\Connection\DAgenda.Classes.Connection.Interfaces.pas"/>
+        <DCCReference Include="Classes\Model\DAgenda.Classes.Model.AbstractService.pas"/>
+        <DCCReference Include="Classes\Model\DAgenda.Classes.Model.Contact.pas"/>
+        <DCCReference Include="Classes\Model\DAgenda.Classes.Model.ContactRepository.pas"/>
+        <DCCReference Include="Classes\Model\DAgenda.Classes.Model.ContactService.pas"/>
+        <DCCReference Include="Classes\Model\DAgenda.Classes.Model.Interfaces.pas"/>
+        <DCCReference Include="Classes\Model\DAgenda.Classes.Model.SpringService.pas"/>
         <None Include="Data\dagenda.s3db"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -356,6 +362,12 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="2">
+                <DeployFile LocalName="Data\dagenda.s3db" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="iOSDevice32">
+                        <RemoteDir>StartUp\Documents\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png" Configuration="Debug" Class="Android_LauncherIcon36">
                     <Platform Name="Android">
                         <RemoteName>ic_launcher.png</RemoteName>
@@ -364,12 +376,6 @@
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_87x87.png" Configuration="Debug" Class="iPhone_AppIcon87">
                     <Platform Name="iOSDevice32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Data\dagenda.s3db" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="iOSDevice32">
-                        <RemoteDir>StartUp\Documents\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -814,12 +820,27 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="ProjectiOSDeviceResourceRules">
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSX32">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
@@ -1173,27 +1194,12 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
-                    </Platform>
+                <DeployClass Name="ProjectiOSDeviceResourceRules">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="OSX32">
-                        <RemoteDir>Contents\MacOS</RemoteDir>
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>

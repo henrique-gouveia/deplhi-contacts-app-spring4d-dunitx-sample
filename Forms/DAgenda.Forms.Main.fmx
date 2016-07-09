@@ -88,7 +88,7 @@ object MainForm: TMainForm
       ExplicitSize.cx = 160.000000000000000000
       ExplicitSize.cy = 49.000000000000000000
       object tbContactsManager: TToolBar
-        Size.Width = 320.000000000000000000
+        Size.Width = 50.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
@@ -111,7 +111,7 @@ object MainForm: TMainForm
           Enabled = True
           ImageIndex = -1
           Margins.Right = 8.000000000000000000
-          Position.X = 208.000000000000000000
+          Position.X = -62.000000000000000000
           Size.Width = 48.000000000000000000
           Size.Height = 48.000000000000000000
           Size.PlatformDefault = False
@@ -124,7 +124,7 @@ object MainForm: TMainForm
           Enabled = True
           ImageIndex = -1
           Margins.Right = 8.000000000000000000
-          Position.X = 264.000000000000000000
+          Position.X = -6.000000000000000000
           Size.Width = 48.000000000000000000
           Size.Height = 48.000000000000000000
           Size.PlatformDefault = False
@@ -134,7 +134,7 @@ object MainForm: TMainForm
         object lblContactsManagerTitle: TLabel
           Align = Contents
           AutoSize = True
-          Size.Width = 320.000000000000000000
+          Size.Width = 50.000000000000000000
           Size.Height = 48.000000000000000000
           Size.PlatformDefault = False
           TextSettings.HorzAlign = Center
@@ -144,14 +144,14 @@ object MainForm: TMainForm
       end
       object lytContactsManager: TLayout
         Align = Client
-        Size.Width = 320.000000000000000000
-        Size.Height = 383.000000000000000000
+        Size.Width = 50.000000000000000000
+        Size.Height = 2.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
         object lbMain: TListBox
           Align = Client
-          Size.Width = 320.000000000000000000
-          Size.Height = 383.000000000000000000
+          Size.Width = 50.000000000000000000
+          Size.Height = 2.000000000000000000
           Size.PlatformDefault = False
           StyleLookup = 'transparentlistboxstyle'
           TabOrder = 0
@@ -159,11 +159,11 @@ object MainForm: TMainForm
           DefaultItemStyles.ItemStyle = ''
           DefaultItemStyles.GroupHeaderStyle = ''
           DefaultItemStyles.GroupFooterStyle = ''
-          Viewport.Width = 320.000000000000000000
-          Viewport.Height = 383.000000000000000000
+          Viewport.Width = 45.000000000000000000
+          Viewport.Height = 2.000000000000000000
           object lbghNome: TListBoxGroupHeader
             Selectable = False
-            Size.Width = 320.000000000000000000
+            Size.Width = 45.000000000000000000
             Size.Height = 30.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
@@ -182,7 +182,7 @@ object MainForm: TMainForm
           object lbiNome: TListBoxItem
             Selectable = False
             Position.Y = 30.000000000000000000
-            Size.Width = 320.000000000000000000
+            Size.Width = 45.000000000000000000
             Size.Height = 44.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 1
@@ -195,14 +195,14 @@ object MainForm: TMainForm
               Margins.Left = 8.000000000000000000
               Margins.Top = 8.000000000000000000
               Margins.Right = 8.000000000000000000
-              Size.Width = 304.000000000000000000
+              Size.Width = 29.000000000000000000
               Size.Height = 32.000000000000000000
               Size.PlatformDefault = False
             end
           end
           object lbghEmail: TListBoxGroupHeader
             Position.Y = 74.000000000000000000
-            Size.Width = 320.000000000000000000
+            Size.Width = 45.000000000000000000
             Size.Height = 30.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 2
@@ -211,7 +211,7 @@ object MainForm: TMainForm
           object lbiEmail: TListBoxItem
             Selectable = False
             Position.Y = 104.000000000000000000
-            Size.Width = 320.000000000000000000
+            Size.Width = 45.000000000000000000
             Size.Height = 44.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 3
@@ -225,14 +225,14 @@ object MainForm: TMainForm
               Margins.Left = 8.000000000000000000
               Margins.Top = 8.000000000000000000
               Margins.Right = 8.000000000000000000
-              Size.Width = 304.000000000000000000
+              Size.Width = 29.000000000000000000
               Size.Height = 32.000000000000000000
               Size.PlatformDefault = False
             end
           end
           object lbghTelefone: TListBoxGroupHeader
             Position.Y = 148.000000000000000000
-            Size.Width = 320.000000000000000000
+            Size.Width = 45.000000000000000000
             Size.Height = 30.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 4
@@ -241,7 +241,7 @@ object MainForm: TMainForm
           object lbiTelefone: TListBoxItem
             Selectable = False
             Position.Y = 178.000000000000000000
-            Size.Width = 320.000000000000000000
+            Size.Width = 45.000000000000000000
             Size.Height = 44.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 5
@@ -255,7 +255,7 @@ object MainForm: TMainForm
               Margins.Left = 8.000000000000000000
               Margins.Top = 8.000000000000000000
               Margins.Right = 8.000000000000000000
-              Size.Width = 304.000000000000000000
+              Size.Width = 29.000000000000000000
               Size.Height = 32.000000000000000000
               Size.PlatformDefault = False
             end
