@@ -3,7 +3,7 @@
 
 # Arquivos Resource sao binarios contendo manifest, icone do projeto e informacao de versao.
 # Estes nao poderao ser visualizados ou comparados por diff-tools. Considere substiruir por uma arquivo .rc.
-#*.res
+*.res
 
 # Arquivo Visual LiveBindings. Adicionado a partir do Delphi XE2.
 # Descomente isso se nao estiver usando LiveBindings Designer.

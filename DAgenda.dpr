@@ -1,6 +1,7 @@
 program DAgenda;
 
 uses
+  System.StartUpCopy,
   FMX.Forms,
   DAgenda.Forms.Main in 'Forms\DAgenda.Forms.Main.pas' {MainForm},
   DAgenda.Classes.Connection.FireDAC.MarshmallowBuilder in 'Classes\Connection\DAgenda.Classes.Connection.FireDAC.MarshmallowBuilder.pas',
