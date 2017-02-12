@@ -1,5 +1,5 @@
 # DAgenda
-Delphi Multi-Device Application de uma simples Agenda de Contatos com o Framework Spring4D.
+Delphi Multi-Device Application, agenda de Contatos com o Framework, Spring Marshmallow e DUnitX.
 
 ## Dependências
 
