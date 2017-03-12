@@ -1,4 +1,4 @@
-unit DAgenda.Classes.Model.Contact;
+unit DContacts.Models.Entities.Contact;
 
 interface
 

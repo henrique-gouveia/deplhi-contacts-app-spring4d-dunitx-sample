@@ -1,15 +1,16 @@
-object MainForm: TMainForm
+object ContactView: TContactView
   Left = 0
   Top = 0
-  Caption = 'DAgenda'
+  Caption = 'DContacts'
   ClientHeight = 480
   ClientWidth = 320
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
+  OnShow = FormShow
   DesignerMasterStyle = 3
-  object tcMain: TTabControl
+  object tabControl: TTabControl
     Align = Client
     Size.Width = 320.000000000000000000
     Size.Height = 480.000000000000000000
@@ -18,7 +19,7 @@ object MainForm: TMainForm
     TabIndex = 0
     TabOrder = 0
     TabPosition = PlatformDefault
-    object tbiContactsList: TTabItem
+    object contactListTabItem: TTabItem
       CustomIcon = <
         item
         end>
@@ -31,12 +32,12 @@ object MainForm: TMainForm
       Text = 'List'
       ExplicitSize.cx = 160.000000000000000000
       ExplicitSize.cy = 49.000000000000000000
-      object tbContactsList: TToolBar
+      object contactListToolBar: TToolBar
         Size.Width = 320.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
-        object lblContactsListTitle: TLabel
+        object contactListLabelTitle: TLabel
           Align = Contents
           AutoSize = True
           Size.Width = 320.000000000000000000
@@ -46,8 +47,8 @@ object MainForm: TMainForm
           TextSettings.WordWrap = False
           Text = 'Contatos'
         end
-        object spbNew: TSpeedButton
-          Action = actNew
+        object addButton: TSpeedButton
+          Action = addAction
           Align = Right
           Enabled = True
           ImageIndex = -1
@@ -60,7 +61,7 @@ object MainForm: TMainForm
           Visible = True
         end
       end
-      object lvMain: TListView
+      object contactListView: TListView
         Touch.InteractiveGestures = [LongTap]
         ItemAppearanceClassName = 'TListItemAppearance'
         ItemEditAppearanceClassName = 'TListItemShowCheckAppearance'
@@ -74,7 +75,7 @@ object MainForm: TMainForm
         OnItemClick = ItemClick
       end
     end
-    object tbiContactsManager: TTabItem
+    object contactManagerTabControlItem: TTabItem
       CustomIcon = <
         item
         end>
@@ -87,13 +88,23 @@ object MainForm: TMainForm
       Text = 'Manager'
       ExplicitSize.cx = 160.000000000000000000
       ExplicitSize.cy = 49.000000000000000000
-      object tbContactsManager: TToolBar
+      object contactManagerToolBar: TToolBar
         Size.Width = 50.000000000000000000
         Size.Height = 48.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 0
-        object spbBack: TSpeedButton
-          Action = actBack
+        object contactManagerLabelTitle: TLabel
+          Align = Contents
+          AutoSize = True
+          Size.Width = 50.000000000000000000
+          Size.Height = 48.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.HorzAlign = Center
+          TextSettings.WordWrap = False
+          Text = 'Gerenciar'
+        end
+        object backButton: TSpeedButton
+          Action = backAction
           Align = Left
           Enabled = True
           ImageIndex = -1
@@ -105,8 +116,8 @@ object MainForm: TMainForm
           StyleLookup = 'backtoolbutton'
           Visible = True
         end
-        object spbOk: TSpeedButton
-          Action = actAdd
+        object saveButton: TSpeedButton
+          Action = saveAction
           Align = Right
           Enabled = True
           ImageIndex = -1
@@ -118,8 +129,8 @@ object MainForm: TMainForm
           StyleLookup = 'donetoolbutton'
           Visible = True
         end
-        object spdRemove: TSpeedButton
-          Action = actRemove
+        object removeButton: TSpeedButton
+          Action = removeAction
           Align = Right
           Enabled = True
           ImageIndex = -1
@@ -131,24 +142,14 @@ object MainForm: TMainForm
           StyleLookup = 'deletetoolbutton'
           Visible = True
         end
-        object lblContactsManagerTitle: TLabel
-          Align = Contents
-          AutoSize = True
-          Size.Width = 50.000000000000000000
-          Size.Height = 48.000000000000000000
-          Size.PlatformDefault = False
-          TextSettings.HorzAlign = Center
-          TextSettings.WordWrap = False
-          Text = 'Gerenciar'
-        end
       end
-      object lytContactsManager: TLayout
+      object contactManagerLayout: TLayout
         Align = Client
         Size.Width = 50.000000000000000000
         Size.Height = 2.000000000000000000
         Size.PlatformDefault = False
         TabOrder = 1
-        object lbMain: TListBox
+        object contactManagerListBox: TListBox
           Align = Client
           Size.Width = 50.000000000000000000
           Size.Height = 2.000000000000000000
@@ -161,14 +162,14 @@ object MainForm: TMainForm
           DefaultItemStyles.GroupFooterStyle = ''
           Viewport.Width = 45.000000000000000000
           Viewport.Height = 2.000000000000000000
-          object lbghNome: TListBoxGroupHeader
+          object nomeListBoxGroupHeader: TListBoxGroupHeader
             Selectable = False
             Size.Width = 45.000000000000000000
             Size.Height = 30.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
             Text = 'Nome'
-            object lblId: TLabel
+            object idLabel: TLabel
               Align = Right
               AutoSize = True
               Margins.Right = 8.000000000000000000
@@ -179,14 +180,14 @@ object MainForm: TMainForm
               Visible = False
             end
           end
-          object lbiNome: TListBoxItem
+          object nomeListBoxItem: TListBoxItem
             Selectable = False
             Position.Y = 30.000000000000000000
             Size.Width = 45.000000000000000000
             Size.Height = 44.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 1
-            object edtNome: TEdit
+            object nomeEdit: TEdit
               Touch.InteractiveGestures = [LongTap, DoubleTap]
               Anchors = [akLeft, akTop, akRight]
               TabOrder = 0
@@ -201,7 +202,7 @@ object MainForm: TMainForm
               Size.PlatformDefault = False
             end
           end
-          object lbghEmail: TListBoxGroupHeader
+          object emailListBoxGroupHeader: TListBoxGroupHeader
             Position.Y = 74.000000000000000000
             Size.Width = 45.000000000000000000
             Size.Height = 30.000000000000000000
@@ -209,14 +210,14 @@ object MainForm: TMainForm
             TabOrder = 2
             Text = 'Email'
           end
-          object lbiEmail: TListBoxItem
+          object emailListBoxItem: TListBoxItem
             Selectable = False
             Position.Y = 104.000000000000000000
             Size.Width = 45.000000000000000000
             Size.Height = 44.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 3
-            object edtEmail: TEdit
+            object emailEdit: TEdit
               Touch.InteractiveGestures = [LongTap, DoubleTap]
               Anchors = [akLeft, akTop, akRight]
               TabOrder = 0
@@ -232,7 +233,7 @@ object MainForm: TMainForm
               Size.PlatformDefault = False
             end
           end
-          object lbghTelefone: TListBoxGroupHeader
+          object telefoneListBoxGroupHeader: TListBoxGroupHeader
             Position.Y = 148.000000000000000000
             Size.Width = 45.000000000000000000
             Size.Height = 30.000000000000000000
@@ -240,14 +241,14 @@ object MainForm: TMainForm
             TabOrder = 4
             Text = 'Telefone'
           end
-          object lbiTelefone: TListBoxItem
+          object telefoneListBoxItem: TListBoxItem
             Selectable = False
             Position.Y = 178.000000000000000000
             Size.Width = 45.000000000000000000
             Size.Height = 44.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 5
-            object edtTelefone: TEdit
+            object telefoneEdit: TEdit
               Touch.InteractiveGestures = [LongTap, DoubleTap]
               Anchors = [akLeft, akTop, akRight]
               TabOrder = 0
@@ -267,25 +268,25 @@ object MainForm: TMainForm
       end
     end
   end
-  object actMain: TActionList
+  object actions: TActionList
     Left = 40
     Top = 416
-    object ctaChangeTab: TChangeTabAction
+    object changeTabAction: TChangeTabAction
       Category = 'Tab'
     end
-    object actNew: TAction
-      Category = 'ToolBar'
-      OnExecute = NewClick
-    end
-    object actBack: TAction
-      Category = 'ToolBar'
-      OnExecute = BackClick
-    end
-    object actAdd: TAction
+    object addAction: TAction
       Category = 'ToolBar'
       OnExecute = AddClick
     end
-    object actRemove: TAction
+    object backAction: TAction
+      Category = 'ToolBar'
+      OnExecute = BackClick
+    end
+    object saveAction: TAction
+      Category = 'ToolBar'
+      OnExecute = SaveClick
+    end
+    object removeAction: TAction
       Category = 'ToolBar'
       OnExecute = RemoveClick
     end

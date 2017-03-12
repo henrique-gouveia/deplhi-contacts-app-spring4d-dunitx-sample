@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{92604FA1-FB27-432B-BBA4-FE0BFCF01420}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DContacts.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Tests\DContacts.Tests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DContacts">
+        <MSBuild Projects="DContacts.dproj"/>
+    </Target>
+    <Target Name="DContacts:Clean">
+        <MSBuild Projects="DContacts.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DContacts:Make">
+        <MSBuild Projects="DContacts.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DContacts_Tests">
+        <MSBuild Projects="Tests\DContacts.Tests.dproj"/>
+    </Target>
+    <Target Name="DContacts_Tests:Clean">
+        <MSBuild Projects="Tests\DContacts.Tests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DContacts_Tests:Make">
+        <MSBuild Projects="Tests\DContacts.Tests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DContacts;DContacts_Tests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DContacts:Clean;DContacts_Tests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DContacts:Make;DContacts_Tests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
