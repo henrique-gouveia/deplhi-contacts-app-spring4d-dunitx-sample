@@ -1,5 +1,5 @@
-# DContacts
-Delphi Multi-Device Application, simples Agenda de Contatos com foco em exemplificar o uso integrado dos frameworks FMX, Spring4D CDI, Spring4D ORM Marshmallow e DUnitX.
+# Delphi Contacts App
+App de Agenda de Contatos com foco em exemplificar o uso integrado dos frameworks FMX, Spring4D CDI, Spring4D ORM Marshmallow e DUnitX com Delphi Multi-Device Application.
 
 ## Dependências
 
